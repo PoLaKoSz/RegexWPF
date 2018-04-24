@@ -26,11 +26,6 @@ namespace RegexPower
 
 
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            ViewModel.SearchHightlighted(PatternBox.Text);
-        }
-
         private void LoadFile_Button_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.LoadFile();
