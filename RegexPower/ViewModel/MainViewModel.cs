@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Documents;
@@ -9,14 +10,16 @@ namespace RegexPower.ViewModel
 {
     public class MainViewModel
     {
-        private PatternRepository Pattern { get; set; }
-        private MainWindow        View    { get; set; }
+        private PatternRepository Pattern     { get; set; }
+        private MainWindow        View        { get; set; }
+        public  ObservableCollection<string>      MatchGroups { get; set; }
 
 
 
         public MainViewModel()
         {
-            Pattern = new PatternRepository();
+            Pattern     = new PatternRepository();
+            MatchGroups = new ObservableCollection<string>();
 
             View = new MainWindow(this);
             View.Show();
@@ -27,6 +30,7 @@ namespace RegexPower.ViewModel
         public void SearchHightlighted(string pattern)
         {
             View.ClearHighlighting();
+            MatchGroups.Clear();
 
             var        regex = new Regex(pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase);
             var textPosition = View.RawUserInput_RichTextBox.Document.ContentStart;
@@ -41,6 +45,8 @@ namespace RegexPower.ViewModel
 
                     foreach (Match match in matchs)
                     {
+                        MatchGroups.Add(match.ToString());
+
                         var start = textPosition.GetPositionAtOffset(match.Index);
                         var   end = start.GetPositionAtOffset(match.Length);
 
