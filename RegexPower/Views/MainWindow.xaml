@@ -9,74 +9,77 @@
         Width="1069">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="263*"/>
-            <ColumnDefinition Width="46*"/>
-            <ColumnDefinition Width="266*"/>
-            <ColumnDefinition Width="487*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="260*"/>
         </Grid.ColumnDefinitions>
-        
-        <Rectangle Fill="#FF4D4DE2"
-                   HorizontalAlignment="Left"
-                   Height="679"
-                   Width="187"
+
+        <Rectangle Fill="#FF4D4DE2"                   
+                   HorizontalAlignment="Stretch"
                    Stroke="Black"
-                   VerticalAlignment="Top"
-                   Margin="0,0,0,-119"/>
+                   VerticalAlignment="Stretch"
+                   Grid.Column="0"/>
         <Label Content="RegexPower"
-               HorizontalAlignment="Left"
-               Margin="36,23,0,0"
+               HorizontalAlignment="Center"
                VerticalAlignment="Top"
                Foreground="#FFE4E4E4"
                Height="38"
                Width="111"
-               FontSize="18"/>
-        <RichTextBox HorizontalAlignment="Left"
-                     AcceptsReturn="True"
-                     Name="RawUserInput_RichTextBox"
-                     Height="623"
-                     Margin="187,56,0,-119"
-                     VerticalAlignment="Top"
-                     Width="875"
-                     Grid.ColumnSpan="4"
-                     Background="WhiteSmoke">
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text=""/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
+               FontSize="18"
+               Grid.Column="0"
+               Margin="0,77,0,0"/>
         <Button Content="Load File"
-                HorizontalAlignment="Left"
-                Margin="22,374,0,0"
-                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
                 Width="142"
                 Height="32"
-                Click="LoadFile_Button_Click"/>
+                Click="LoadFile_Button_Click"
+                Margin="0,0,0,130"/>
         <Button Content="Valid Email"
-                HorizontalAlignment="Left"
-                Margin="22,427,0,0"
-                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
                 Width="142"
                 Height="32"
-                Click="ValidateEmail_Button_Click"/>
-        <TextBox HorizontalAlignment="Left"
-                 Name="ownPatter"
-                 Height="33"
-                 Margin="28,15,0,0"
-                 TextWrapping="Wrap"
-                 VerticalAlignment="Top"
-                 Width="715"
-                 TextChanged="RegexInput_TextBox_TextChanged"
-                 Grid.Column="2"
-                 Grid.ColumnSpan="2"/>
-        <Label Content="Regular Expression:"
-               HorizontalAlignment="Left"
-               Margin="198,10,0,0"
-               VerticalAlignment="Top"
-               Foreground="#FFE4E4E4"
-               Height="38"
-               Width="111"
-               FontSize="14"
-               Grid.ColumnSpan="2"/>
+                Click="ValidateEmail_Button_Click"
+                Margin="0,0,0,40"/>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="Regular Expression:"
+                       FontSize="14"
+                       Padding="10,10,0,0"
+                       Grid.Column="0"/>
+                <TextBox Name="ownPatter"
+                         FontSize="24"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch"
+                         TextWrapping="Wrap"
+                         Padding="10,0,10,0"
+                         TextChanged="RegexInput_TextBox_TextChanged"
+                         Grid.Column="1"/>
+            </Grid>
+
+            <RichTextBox Name="RawUserInput_RichTextBox"
+                         VerticalAlignment="Stretch"
+                         HorizontalAlignment="Stretch"
+                         AcceptsReturn="True"
+                         Background="WhiteSmoke"
+                         Grid.Row="1">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text=""/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+        </Grid>
     </Grid>
 </Window>
